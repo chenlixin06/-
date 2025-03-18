@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建筑工程管理自动化工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #1e50a2;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .module {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1e50a2;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .module p {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1e50a2;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0f3b7d;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .modules {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>建筑工程管理自动化工具</h1>
+            <p>提升效率，降低错误，简化工程管理流程</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="modules">
+            <div class="module">
+                <h3>招标文件自动编制</h3>
+                <p>根据公司管理制度和招标需求要点，自动编制招标文件，并进行检查校对。</p>
+                <div class="upload-area">
+                    <p>拖拽上传招标需求文件和制度文件</p>
+                    <input type="file" id="bidding-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('bidding-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成招标文件</button>
+            </div>
+            
+            <div class="module">
+                <h3>合同文件自动编制</h3>
+                <p>根据招标文件和中标人的报价及清单，自动编制合同文件。</p>
+                <div class="upload-area">
+                    <p>拖拽上传招标文件和报价清单</p>
+                    <input type="file" id="contract-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('contract-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成合同文件</button>
+            </div>
+            
+            <div class="module">
+                <h3>工程量结算单生成</h3>
+                <p>根据工程量结算样表、合同清单及成果验收表，自动编制工程量结算单。</p>
+                <div class="upload-area">
+                    <p>拖拽上传结算所需文件</p>
+                    <input type="file" id="settlement-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('settlement-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成结算单</button>
+            </div>
+            
+            <div class="module">
+                <h3>技术交底书生成</h3>
+                <p>依据设计图纸、行业规范、施工方案，参照模板编制技术交底书。</p>
+                <div class="upload-area">
+                    <p>拖拽上传设计图纸和施工方案</p>
+                    <input type="file" id="technical-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('technical-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成技术交底书</button>
+            </div>
+            
+            <div class="module">
+                <h3>作业指导书生成</h3>
+                <p>依据设计图纸、行业规范、施工方案，参照模板编制作业指导书。</p>
+                <div class="upload-area">
+                    <p>拖拽上传相关文件</p>
+                    <input type="file" id="instruction-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('instruction-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成作业指导书</button>
+            </div>
+            
+            <div class="module">
+                <h3>施工组织设计文件编制</h3>
+                <p>依据招标文件、招标图纸、行业规范、素材库，按照指定格式编制投标施工组织设计文件。</p>
+                <div class="upload-area">
+                    <p>拖拽上传招标文件和图纸</p>
+                    <input type="file" id="organization-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('organization-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成施工组织设计</button>
+            </div>
+            
+            <div class="module">
+                <h3>专项施工方案审核</h3>
+                <p>按照危大工程专项施工方案的管理办法和企业制度及行业规范的要求，对专项施工方案的完整性、准确性进行审核。</p>
+                <div class="upload-area">
+                    <p>拖拽上传专项施工方案</p>
+                    <input type="file" id="audit-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('audit-files').click()">选择文件</button>
+                </div>
+                <button class="btn">开始审核</button>
+            </div>
+            
+            <div class="module">
+                <h3>平面布置方案比选</h3>
+                <p>根据企业标准化要求和场地实际条件，结合成本要素自动开展平面布置和方案比选。</p>
+                <div class="upload-area">
+                    <p>拖拽上传场地条件和标准要求</p>
+                    <input type="file" id="layout-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('layout-files').click()">选择文件</button>
+                </div>
+                <button class="btn">方案比选</button>
+            </div>
+            
+            <div class="module">
+                <h3>临时结构方案分析</h3>
+                <p>根据设计图纸和案例库，开展施工临时结构方案选型和可行性分析。</p>
+                <div class="upload-area">
+                    <p>拖拽上传设计图纸</p>
+                    <input type="file" id="structure-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('structure-files').click()">选择文件</button>
+                </div>
+                <button class="btn">方案分析</button>
+            </div>
+            
+            <div class="module">
+                <h3>施工动画脚本生成</h3>
+                <p>根据专项施工方案中设计参数、施工工艺，编写施工动画脚本材料。</p>
+                <div class="upload-area">
+                    <p>拖拽上传专项施工方案</p>
+                    <input type="file" id="animation-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('animation-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成动画脚本</button>
+            </div>
+            
+            <div class="module">
+                <h3>宣传视频剧本生成</h3>
+                <p>根据专项施工方案、技术重难点分析材料，制作宣传视频剧本。</p>
+                <div class="upload-area">
+                    <p>拖拽上传相关分析材料</p>
+                    <input type="file" id="video-files" multiple style="display:none">
+                    <button class="btn" onclick="document.getElementById('video-files').click()">选择文件</button>
+                </div>
+                <button class="btn">生成视频剧本</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="container">
+        <p>© 2023 建筑工程管理自动化工具 | 提升工程管理效率的智能助手</p>
+    </footer>
+
+    <script>
+        // 为所有的上传区域添加拖放功能
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                area.style.backgroundColor = '#f0f8ff';
+                area.style.borderColor = '#1e50a2';
+            });
+            
+            area.addEventListener('dragleave', () => {
+                area.style.backgroundColor = '';
+                area.style.borderColor = '#ccc';
+            });
+            
+            area.addEventListener('drop', (e) => {
+                e.preventDefault();
+                area.style.backgroundColor = '';
+                area.style.borderColor = '#ccc';
+                
+                // 这里可以添加文件处理逻辑
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    let fileNames = [];
+                    for (let i = 0; i < files.length; i++) {
+                        fileNames.push(files[i].name);
+                    }
+                    alert(`已选择文件：${fileNames.join(', ')}`);
+                }
+            });
+        });
+        
+        // 为所有按钮添加点击事件
+        document.querySelectorAll('.btn').forEach(btn => {
+            if (btn.textContent !== '选择文件') {
+                btn.addEventListener('click', function() {
+                    alert(`您点击了"${this.textContent}"按钮，此功能正在开发中。`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
